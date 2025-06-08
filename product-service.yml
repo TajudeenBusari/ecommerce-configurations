@@ -46,3 +46,4 @@ eureka:
 #    bootstrap:
 #      enabled: true
 
+#this file is now available in the submodule applicationsConfiguration
