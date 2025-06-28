@@ -1,9 +1,4 @@
-
-#server:
-#  port: 8083
 spring:
-#  application:
-#    name: product-service # This name is used in WebClient URI
   datasource:
     url: jdbc:postgresql://localhost:5432/ECommerce-Product-Service
     username: postgres
