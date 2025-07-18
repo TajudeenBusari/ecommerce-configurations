@@ -1,1 +1,16 @@
 #this file is now available in the submodule applicationsConfiguration UPDATED
+spring:
+  application:
+    name: api-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8762/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+#there is no need to base-url for the api-gateway as it is a gateway and does not have its own base-url
+#it is mainly used to route requests to other services. But if i need to create some endpoint in the
+#api-gateway service for example to get its running status, i can set it here
