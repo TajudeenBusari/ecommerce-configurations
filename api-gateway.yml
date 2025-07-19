@@ -1,7 +1,7 @@
 #this file is now available in the submodule applicationsConfiguration UPDATED
-spring:
-  application:
-    name: api-gateway
+#spring:
+#  application:
+#    name: api-gateway
 eureka:
   client:
     service-url:
