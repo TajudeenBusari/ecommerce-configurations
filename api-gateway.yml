@@ -5,7 +5,10 @@
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8762/eureka/
+      #make this dynamic so that it can be used in different environments
+      defaultZone: {$EUREKA_SERVER_URL:http://localhost:8763/eureka/}
+
+      ##defaultZone: http://localhost:8762/eureka/
     fetch-registry: true
     register-with-eureka: true
   instance:
