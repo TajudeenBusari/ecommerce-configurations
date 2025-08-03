@@ -12,10 +12,10 @@ spring:
         format_sql: true
       database-platform: org.hibernate.dialect.PostgreSQLDialect
 
-  data:
-    redis:
-      host: ${REDIS_HOST:localhost}
-      port: ${REDIS_PORT:6379}
+  redis:
+    host: ${SPRING_REDIS_HOST:localhost}
+    port: ${SPRING_REDIS_PORT:6379}
+
 
 api:
   endpoint:
