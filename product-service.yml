@@ -15,11 +15,12 @@ spring:
   cloud:
     config:
       allow-override: true #This allows the application to override properties from the config server
+      override-none: false #This allows the application to override properties from the config server
       override-system-properties: false #This allows the application to override system properties from the config server
-
-  redis:
-    host: ${SPRING_REDIS_HOST:redis}
-    port: ${SPRING_REDIS_PORT:6379}
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:redis}
+      port: ${SPRING_DATA_REDIS_PORT:6379}
 
 
 api:
@@ -43,5 +44,9 @@ eureka:
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+logging:
+  level:
+    org.springframework.data.redis: DEBUG
+    org.springframework.cloud.config: DEBUG
 
 #this file is now available in the submodule applicationsConfiguration
