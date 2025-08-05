@@ -11,15 +11,16 @@ spring:
       hibernate:
         format_sql: true
       database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local} #default to 'local' if not set
+
   #new
   cloud:
     config:
       allow-override: true #This allows the application to override properties from the config server
       override-none: false #This allows the application to override properties from the config server
       override-system-properties: false #This allows the application to override system properties from the config server
-
-  profiles:
-    active: ${SPRING_PROFILES_ACTIVE:local} #default to 'local' if not set
 
   data:
     redis:
@@ -28,26 +29,6 @@ spring:
       database: 0 #default Redis database
       password: ${REDIS_PASSWORD:} #optional password, if Redis is secured, empty
       timeout: 5000 #5 seconds
-
----
-#Local profile
-spring:
-  config:
-    activate:
-      on-profile: local
-  data:
-    redis:
-      host: localhost
-
----
-#Docker profile
-spring:
-  config:
-    activate:
-      on-profile: docker
-  data:
-    redis:
-      host: redis #This is the name of the Redis service in the docker-compose file
 
 api:
   endpoint:
