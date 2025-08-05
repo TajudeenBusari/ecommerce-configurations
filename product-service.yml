@@ -25,7 +25,10 @@ spring:
     redis:
       host: ${REDIS_HOST:${SPRING_DATA_REDIS_HOST:redis}}
       port: ${REDIS_PORT:${SPRING_DATA_REDIS_PORT:6379}}
+      database: 0 #default Redis database
+      password: ${REDIS_PASSWORD:} #optional password, if Redis is secured, empty
       timeout: 5000 #5 seconds
+
 ---
 #Local profile
 spring:
@@ -35,8 +38,6 @@ spring:
   data:
     redis:
       host: localhost
-      database: 0 #default Redis database
-      password: ${REDIS_PASSWORD:} #optional password, if Redis is secured, empty by default
 
 ---
 #Docker profile
@@ -46,9 +47,7 @@ spring:
       on-profile: docker
   data:
     redis:
-      host: redis
-      database: 0 #default Redis database
-      password: ${REDIS_PASSWORD:} #optional password, if Redis is secured, empty by default
+      host: redis #This is the name of the Redis service in the docker-compose file
 
 api:
   endpoint:
