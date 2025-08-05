@@ -24,7 +24,7 @@ spring:
 
   data:
     redis:
-      host: ${REDIS_HOST:${SPRING_DATA_REDIS_HOST:redis}}
+      host: ${REDIS_HOST:${SPRING_DATA_REDIS_HOST:localhost}}
       port: ${REDIS_PORT:${SPRING_DATA_REDIS_PORT:6379}}
       database: 0 #default Redis database
       password: ${REDIS_PASSWORD:} #optional password, if Redis is secured, empty
