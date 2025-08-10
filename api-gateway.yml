@@ -25,3 +25,4 @@ eureka:
 #there is no need to base-url for the api-gateway as it is a gateway and does not have its own base-url
 #it is mainly used to route requests to other services. But if i need to create some endpoint in the
 #api-gateway service for example to get its running status, i can set it here
+#http://localhost:8080/swagger-ui/index.html#/inventory-controller/getAllInventory
