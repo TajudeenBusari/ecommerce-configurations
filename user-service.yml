@@ -1,23 +1,36 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:5432/ECommerce-User-Service
+  #Runtime operations (reactive) database configuration using R2DBC
+  r2dbc:
+    url: r2dbc:postgresql://${DB_HOST:localhost}:5432/ECommerce-User-Service
     username: ${DB_USER:postgres}
     password: ${DB_PASSWORD:postgres}
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    pool:
+      initial-size: 5
+      max-size: 20
+      max-idle-time: 30000 #30 seconds
+      max-acquire-time: 60000 #60 seconds
+
+  #Schema migrations (blocking - start up only)
+  flyway:
+    enabled: true
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/ECommerce-User-Service
+    user: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+  #reactive web application configuration
+  main:
+    web-application-type: reactive
+
+  #active profile configuration
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:local} #default to 'local' if not set
+
+  #spring cloud config client configuration
   cloud:
     config:
       allow-override: true #This allows the application to override properties from the config server
       override-none: false #This allows the application to override properties from the config server
       override-system-properties: false #This allows the application to override system properties from the config server
+
   data:
     redis:
         host: ${REDIS_HOST:${SPRING_DATA_REDIS_HOST:localhost}}
@@ -37,6 +50,7 @@ api:
       write-dates-as-timestamps: false #This ensures that dates are serialized as ISO-8601 formatted strings instead of Unix timestamps.
     deserialization:
       fail-on-unknown-properties: false #This allows the application to ignore unknown properties in JSON
+
 #Register with Eureka service discovery
 eureka:
   client:
