@@ -1,7 +1,7 @@
 spring:
   #Runtime operations (reactive) database configuration using R2DBC
   r2dbc:
-    url: r2dbc:postgresql://${DB_HOST:localhost}:5432/ECommerce-User-Service
+    url: r2dbc:postgresql://${DB_HOST:localhost}:5432/${DB_NAME:ECommerce-User-Service}
     username: ${DB_USER:postgres}
     password: ${DB_PASSWORD:postgres}
     pool:
@@ -13,8 +13,8 @@ spring:
   #Schema migrations (blocking - start up only)
   flyway:
     enabled: true
-    url: jdbc:postgresql://${DB_HOST:localhost}:5432/ECommerce-User-Service
-    user: ${DB_USER:postgres}
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_NAME:ECommerce-User-Service}
+    user: ${DB_USER:postgres} #NOTE:flyway use user and password for database migrations, standard JDBC connection properties
     password: ${DB_PASSWORD:postgres}
     baseline-on-migrate: true
     locations: classpath:db/migration
