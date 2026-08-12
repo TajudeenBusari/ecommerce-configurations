@@ -3,8 +3,8 @@
 #  application:
 #    name: api-gateway
 spring:
-  profiles:
-    active: ${SPRING_PROFILES_ACTIVE:local} #default to 'local' if not set
+#  profiles:
+#    active: ${SPRING_PROFILES_ACTIVE:local} #default to 'local' if not set no longer used in Spring boot 4.x.x
   cloud:
     config:
       allow-override: true #This allows the application to override properties from the config server

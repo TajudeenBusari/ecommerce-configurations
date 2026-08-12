@@ -11,8 +11,6 @@ spring:
       hibernate:
         format_sql: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-  profiles:
-    active: ${SPRING_PROFILES_ACTIVE:local} #default to 'local' if not set
 
   cloud:
     config:

@@ -24,10 +24,6 @@ spring:
   main:
     web-application-type: reactive
 
-  #active profile configuration
-  profiles:
-    active: ${SPRING_PROFILES_ACTIVE:local} #default to 'local' if not set
-
   #spring cloud config client configuration
   cloud:
     config:
