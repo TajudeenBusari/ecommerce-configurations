@@ -24,6 +24,8 @@ spring:
       port: ${REDIS_PORT:${SPRING_DATA_REDIS_PORT:6379}}
       database: 0 #default Redis database
       password: ${REDIS_PASSWORD:} #optional password, if Redis is secured, empty
+      ssl:
+        enabled: ${REDIS_SSL_ENABLED:false} #optional SSL, default false
       timeout: 5000 #5 seconds
 api:
   endpoint:
