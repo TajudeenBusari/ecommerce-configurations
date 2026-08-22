@@ -1,6 +1,7 @@
 spring:
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:5432/ECommerce-Order-Service
+
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_NAME:ECommerce-Order-Service}
     username: ${DB_USER:postgres}
     password: ${DB_PASSWORD:postgres}
   jpa:
