@@ -4,11 +4,13 @@ spring:
     url: r2dbc:postgresql://${DB_HOST:localhost}:5432/${DB_NAME:ECommerce-User-Service}
     username: ${DB_USER:postgres}
     password: ${DB_PASSWORD:postgres}
-    pool:
-      initial-size: 5
-      max-size: 20
-      max-idle-time: 30000 #30 seconds
-      max-acquire-time: 60000 #60 seconds
+    hikari:
+      maximum-pool-size: ${DB_MAX_POOL_SIZE:3}
+      minimum-idle: ${DB_MIN_IDLE:1}
+      connection-timeout: ${DB_CONNECTION_TIMEOUT:30000}
+      max-lifetime: ${DB_MAX_LIFETIME:1800000}
+      idle-timeout: ${DB_IDLE_TIMEOUT:600000}
+
 
   #Schema migrations (blocking - start up only)
   flyway:
